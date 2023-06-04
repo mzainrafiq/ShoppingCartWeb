@@ -26,13 +26,15 @@ namespace ShoppingCart.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int? productId)
+        public IActionResult Details(int? id)
         {
+            var productInfo = _unitOfWork.Product.GetT(x => x.Id == id, includeProperties: "Category");
             Cart cart = new Cart()
             {
-                Product =  _unitOfWork.Product.GetT(x => x.Id == productId, includeProperties: "Category"),
+                
+                Product =  _unitOfWork.Product.GetT(x => x.Id == id, includeProperties: "Category"),
                 Count = 1,
-                ProductId = (int)productId
+                ProductId = (int)id
             };
             return View(cart);
         }

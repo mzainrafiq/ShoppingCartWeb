@@ -116,12 +116,16 @@ namespace ShoppingCart.Web.Areas.Admin.Controllers
                 {
                     return NotFound();
                 }
-                var category = _unitOfWork.Category.GetT(x => x.Id == id);
-                if (category == null)
-                {
-                    return NotFound();
-                }
-                return View(category);
+                var product = _unitOfWork.Product.GetT(x => x.Id == id);
+                _unitOfWork.Product.Delete(product);
+                _unitOfWork.Save();
+                TempData["success"] = "Product Delete Done!";
+                return RedirectToAction("Index");
+            //if (category == null)
+            //{
+            //    return NotFound();
+            //}
+            return View(product);
             }
             [HttpPost, ActionName("Delete")]
             [ValidateAntiForgeryToken]
