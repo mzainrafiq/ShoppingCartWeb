@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ShoppingCart.DataAccess.Repositories;
-using ShoppingCart.DataAccess.ViewModels;
-
+using ShoppingCart.DB.Model.Repositories;
+using ShoppingCart.Web.ViewModels;
 
 namespace ShoppingCart.Web.Areas.Admin.Controllers
 {
@@ -28,7 +27,10 @@ namespace ShoppingCart.Web.Areas.Admin.Controllers
 
             public IActionResult Index()
             {
-                return View();
+            ProductVM products = new ProductVM();
+            products.Products = _unitOfWork.Product.GetAll(includeProperties: "Category");
+            //var products = _unitOfWork.Product.GetAll(includeProperties: "Category");
+            return View(products);
             }
 
             [HttpGet]

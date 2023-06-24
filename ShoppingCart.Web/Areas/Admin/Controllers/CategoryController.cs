@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShoppingCart.DataAccess.Repositories;
-using ShoppingCart.DataAccess.ViewModels;
-using ShoppingCart.Models;
+using ShoppingCart.DB.Model.Repositories;
+using ShoppingCart.Web.ViewModels;
 
 namespace ShoppingCart.Web.Areas.Admin.Controllers
 {

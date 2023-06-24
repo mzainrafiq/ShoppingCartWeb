@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ShoppingCart.DataAccess.Repositories;
-using ShoppingCart.Models;
+using ShoppingCart.DB.Model.Models;
+using ShoppingCart.DB.Model.Repositories;
+using ShoppingCart.Web.ViewModels;
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -76,7 +77,7 @@ namespace ShoppingCart.Web.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ShoppingCart.Models.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using ShoppingCart.DataAccess.Data;
-using ShoppingCart.DataAccess.Repositories;
+using ShoppingCart.DB.Model.Models;
+using ShoppingCart.DB.Model.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
