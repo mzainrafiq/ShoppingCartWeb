@@ -13,6 +13,7 @@ namespace ShoppingCart.DB.Model.Repositories
 
         public ICategoryRepository Category { get; private set; }
         public IProductRepository Product { get; private set; }
+        public IUserRepository User { get; private set; }
 
         public object Cart => throw new NotImplementedException();
 
@@ -26,7 +27,7 @@ namespace ShoppingCart.DB.Model.Repositories
             _context = context;
             Category = new CategoryRepository(context);
             Product = new ProductRepository(context);
-
+            User = new UserRepository(context);
             //Cart = new CartRepository(context);
             //ApplicationUser = new ApplicationRepository(context);
             //OrderHeader = new OrderHeaderRepository(context);

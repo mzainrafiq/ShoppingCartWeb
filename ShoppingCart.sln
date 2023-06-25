@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Web", "Shoppin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Models", "ShoppingCart.Models\ShoppingCart.Models.csproj", "{54E4958A-999D-49D0-A226-6C0A08979B2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Utility", "ShoppingCart.Utility\ShoppingCart.Utility.csproj", "{AD2DF64F-37F6-460D-A5C9-CC6796F1E7D9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.DataAccess", "ShoppingCart.DataAccess\ShoppingCart.DataAccess.csproj", "{C2B54DF2-6F69-4125-8A62-465A9C749788}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.DB.Model", "ShoppingCart.DB.Model\ShoppingCart.DB.Model.csproj", "{E8EADA34-0482-4F3F-B664-7D1FF00F6001}"
 EndProject
 Global
@@ -27,14 +23,6 @@ Global
 		{54E4958A-999D-49D0-A226-6C0A08979B2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54E4958A-999D-49D0-A226-6C0A08979B2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54E4958A-999D-49D0-A226-6C0A08979B2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AD2DF64F-37F6-460D-A5C9-CC6796F1E7D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD2DF64F-37F6-460D-A5C9-CC6796F1E7D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD2DF64F-37F6-460D-A5C9-CC6796F1E7D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD2DF64F-37F6-460D-A5C9-CC6796F1E7D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2B54DF2-6F69-4125-8A62-465A9C749788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2B54DF2-6F69-4125-8A62-465A9C749788}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2B54DF2-6F69-4125-8A62-465A9C749788}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2B54DF2-6F69-4125-8A62-465A9C749788}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E8EADA34-0482-4F3F-B664-7D1FF00F6001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E8EADA34-0482-4F3F-B664-7D1FF00F6001}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8EADA34-0482-4F3F-B664-7D1FF00F6001}.Release|Any CPU.ActiveCfg = Release|Any CPU

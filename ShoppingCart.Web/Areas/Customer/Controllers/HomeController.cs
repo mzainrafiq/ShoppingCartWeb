@@ -11,18 +11,15 @@ namespace ShoppingCart.Web.Controllers
     [Area("Customer")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private IUnitOfWork _unitOfWork;
-        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
+        public HomeController(IUnitOfWork unitOfWork)
         {
-            _logger = logger;
             _unitOfWork = unitOfWork;
         }
         [HttpGet]
         public IActionResult Index()
         {
             IEnumerable<Product> products = _unitOfWork.Product.GetAll(includeProperties: "Category");
-
             return View(products);
         }
 
@@ -78,6 +75,42 @@ namespace ShoppingCart.Web.Controllers
         public IActionResult Error()
         {
             return View(new ShoppingCart.Models.ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+
+
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        public IActionResult CreateUser(UserVM vm)
+        {
+            vm.User.City = "Lahore";
+            _unitOfWork.User.Add(vm.User);
+
+            _unitOfWork.Save();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult LogIn(string username, string password)
+        {
+            if(!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password)) 
+            {
+                User user = _unitOfWork.User.ValidateUser(username, password);
+                if(user!= null)
+                {
+                    TempData["UserName"] = user.UserName;
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.message = "Invalid User Name or Password";
+                    
+                }
+            }
+            return View();
         }
     }
 }

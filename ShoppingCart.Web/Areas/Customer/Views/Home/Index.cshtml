@@ -3,6 +3,7 @@
     ViewData["Title"] = "Home Page";
 }
 <div class="row pb-4">
+    <b>@TempData["UserName"]</b>
     @foreach(var item in @Model)
     {
         <div class="card" style="width: 18rem;">

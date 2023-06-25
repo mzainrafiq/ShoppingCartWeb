@@ -10,6 +10,7 @@ namespace ShoppingCart.DB.Model.Repositories
     {
         ICategoryRepository Category { get; }
         IProductRepository Product { get; }
+        IUserRepository User { get; }
         object Cart { get; }
 
         //ICartRepository Cart { get; }
