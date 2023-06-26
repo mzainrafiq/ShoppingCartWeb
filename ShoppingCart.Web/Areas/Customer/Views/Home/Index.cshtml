@@ -50,13 +50,16 @@
     }
 </div>
 
-
-<script>
-    $(document).ready(function () {
-        alert("READY");
-        var usr  = document.getElementById("#userData").data('user');
-        console.log(usr);
-    });
+@section scripts{
+    <script src="~/js/site.js"></script>
+}
+<script>  
+   
+    //$(document).ready(function () {
+    //    alert("READY");
+    //    var usr  = document.getElementById("#userData").data('user');
+    //    console.log(usr);
+    //});
     function addToCart(productId, price) {
         var quantity = document.getElementById(productId).value;
        var a = quantity * price;

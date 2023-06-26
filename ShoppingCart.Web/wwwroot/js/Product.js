@@ -1,24 +1,32 @@
 var dtable
 $(document).ready(function () {
 
-    dtable = $('#myTable').DataTable({
+    var usr = localStorage.getItem("loggedInUser");
+    if (usr != null && usr != undefined && usr != "")
+    {
+        var loggedInUser = JSON.parse(usr);
+        if (loggedInUser.IsAdmin)
+            $(".productEditDelete").show();
+    }
+    
+    /*dtable = $('#myTable').DataTable({
         "ajax": { "url": "/Admin/Product/AllProducts" },
         "columns": [
             { "data": "Name" },
             { "data": 'Description' },
             { "data": "Price" },
             { "data": "Category.Name" }
-            //,{
-            //    "data": "Id",
-            //    "render": function (data) {
-            //        return `
-            //        <a href= "/Admin/Product/CreateUpdate?id=${data}"><i class="bi bi-pencil-square"></i></a>
-            //        <a href= "/Admin/Product/Delete?id=${data}"><i class="bi bi-trash"></i></a>`
-            //    }
+            ,{
+                "data": "Id",
+                "render": function (data) {
+                    return `
+                    <a href= "/Admin/Product/CreateUpdate?id=${data}"><i class="bi bi-pencil-square"></i></a>
+                    <a href= "/Admin/Product/Delete?id=${data}"><i class="bi bi-trash"></i></a>`
+                }
 
-            //}
+            }
         ]
-    });
+    });*/
 });
 
 function RemoveProduct(url) {

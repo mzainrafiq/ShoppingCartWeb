@@ -9,7 +9,7 @@
         <div class="col-6">
             <h2 class=" text-privacy">List of Products</h2>
         </div>
-        <div class="col-6" text-end>
+        <div class="col-6 forAdmin" style="display: none">
             <a class="btn btn-primary" asp-action="CreateUpdate" asp-controller="Product"><i class="bi bi-plus-circle"></i>&nbsp; Create New Products</a>
         </div>
     </div>
@@ -30,9 +30,9 @@
             <th>
                 Category
             </th>
-           @* <th>
+            <th class="forAdmin" style="display: none">
                 Action
-            </th>*@
+            </th>
         </tr>
     </thead>
 
@@ -45,7 +45,7 @@
                 <td>@item.Price</td>
                 <td>@item.Category.Name</td>
 
-                <td role="group">
+                <td role="group" class="forAdmin" style="display: none">
                     <a asp-action="CreateUpdate" asp-controller="product" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a>
                     <a asp-action="Delete" asp-controller="product" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete</a>
                 </td>
@@ -54,6 +54,6 @@
     </tbody>
 </table>
 
-@*@section scripts{
-    <script src="~/js/Product.js"></script>
-}*@
+@section scripts{
+    <script src="~/js/site.js"></script>
+}
