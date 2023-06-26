@@ -24,7 +24,7 @@
 </style>
 <div class="row pb-4">
     <b>@TempData["UserName"]</b>
-    <button onclick="CheckOut(@TempData["UserId"])" class="btn btn-success">CheckOut</button>
+    @*<button onclick="CheckOut(@TempData["UserId"])" class="btn btn-success">CheckOut</button>*@
     <input type="text" id="userData" data-user="@TempData["User"]" hidden/>
     @foreach(var item in @Model)
     {
@@ -64,7 +64,7 @@
     function addToCart(productId, price) {
         var quantity = document.getElementById(productId).value;
        var a = quantity * price;
-        alert(a); 
+        alert('Quantity: '+quantity+", Total price: "+a); 
         var item = {
             "productId": productId,
             //"userId": userId,
