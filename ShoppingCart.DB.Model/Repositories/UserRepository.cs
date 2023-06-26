@@ -21,5 +21,9 @@ namespace ShoppingCart.DB.Model.Repositories
             var usr = _context.Users.Where(x => x.UserName.Equals(userName) && x.Password.Equals(password)).FirstOrDefault();
             return usr;
         }
+        public bool IsUserExists(string userName)
+        {
+            return _context.Users.Any(x => x.UserName.Equals(userName));
+        }
     }
 }
