@@ -2,8 +2,30 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<style>
+    .add-to-cart-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+    }
+    .cart-countet{
+        width: 45px;
+        height: 35px;
+        text-align: center;
+    }
+</style>
 <div class="row pb-4">
     <b>@TempData["UserName"]</b>
+    <button onclick="CheckOut(@TempData["UserId"])" class="btn btn-success">CheckOut</button>
+    <input type="text" id="userData" data-user="@TempData["User"]" hidden/>
     @foreach(var item in @Model)
     {
         <div class="card" style="width: 18rem;">
@@ -11,10 +33,83 @@
             <div class="card-body">
                 <h5 class="card-title">@item.Name</h5>
                 <p class="card-text">Price: @item.Price.ToString("0.00")</p>
-                <p>Id is @item.Id</p>
+                @*<p>Id is @item.Id</p>*@
+                
+                <div>
+                    <button onclick="addToCart(@item.Id, @item.Price)" class="btn btn-success">Add to Cart</button>
+                    <span><input id="@item.Id" type="text" class="cart-countet" value="0"></span>
+                </div>
+                <br>
                 <a asp-action="Details" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                @*<button class ="add-to-cart-btn">-</button>
+                <input type="text" class="cart-countet" value="0">
+                <button class="add-to-cart-btn" onclick="Increment()">+</button>*@
             </div>
 
         </div>
     }
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        alert("READY");
+        var usr  = document.getElementById("#userData").data('user');
+        console.log(usr);
+    });
+    function addToCart(productId, price) {
+        var quantity = document.getElementById(productId).value;
+       var a = quantity * price;
+        alert(a); 
+        var item = {
+            "productId": productId,
+            //"userId": userId,
+            "quantity": quantity,
+            "price": quantity * price
+        };
+
+        var itemList = [];
+        var cart = localStorage.getItem("userCart");
+        if (cart == null) {
+            alert('empty item list');
+            itemList.push(item);
+            localStorage.setItem("userCart", JSON.stringify(itemList));
+        }
+        else
+        {
+            itemList = JSON.parse(cart); 
+            itemList.push(item);
+            localStorage.setItem("userCart", JSON.stringify(itemList));
+        }
+        
+        
+       
+    }
+
+    function CheckOut(userId) {
+        var cart = localStorage.getItem("userCart");
+        console.log(cart);
+
+        var CartVM = {
+            "UserId": userId,
+            //"cartLines": JSON.parse(cart)
+        }
+
+        console.log(JSON.stringify(CartVM));
+        // Send an Ajax request to the server to add the product to the cart
+        $.ajax({
+            url: '/Customer/Home/CheckOut',
+            type: 'POST',
+            data: JSON.stringify(CartVM),
+            contentType: 'application/json',
+            success: function (result) {
+                // Handle the success response (e.g., show a success message, update the UI, etc.)
+                console.log('Product added to cart successfully');
+            },
+            error: function () {
+                // Handle the error response (e.g., show an error message, handle failure scenario, etc.)
+                console.log('Error occurred while adding the product to the cart');
+            }
+        });
+    }
+</script>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ShoppingCart.DB.Model.Models;
 using ShoppingCart.DB.Model.Repositories;
 using ShoppingCart.Web.ViewModels;
@@ -102,6 +103,8 @@ namespace ShoppingCart.Web.Controllers
                 if(user!= null)
                 {
                     TempData["UserName"] = user.UserName;
+                    TempData["UserId"] = user.UserId;
+                    TempData["User"] = JsonConvert.SerializeObject(user);
                     return RedirectToAction("Index");
                 }
                 else
@@ -112,5 +115,24 @@ namespace ShoppingCart.Web.Controllers
             }
             return View();
         }
+        [HttpPost]
+        public IActionResult AddToCart(int id, int userId)
+        {
+            // Logic to add the product with the specified ID to the cart
+            // You can use a cart service, session, or database to store the cart items
+
+            // Return an appropriate response (e.g., success message, updated cart data, etc.)
+            return Ok();
+        }
+        [HttpPost]
+        public IActionResult CheckOut([FromBody] CartVM vm)
+        {
+            // Logic to add the product with the specified ID to the cart
+            // You can use a cart service, session, or database to store the cart items
+
+            // Return an appropriate response (e.g., success message, updated cart data, etc.)
+            return Ok();
+        }
+
     }
 }
