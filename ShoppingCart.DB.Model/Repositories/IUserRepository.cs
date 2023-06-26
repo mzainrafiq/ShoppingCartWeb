@@ -11,5 +11,6 @@ namespace ShoppingCart.DB.Model.Repositories
     public interface IUserRepository : IRepository<User>
     {
         public User ValidateUser(string userName, String password);
+        public bool IsUserExists(string userName);
     }
 }

@@ -28,14 +28,15 @@ namespace ShoppingCart.Web.Controllers
         public IActionResult Details(int? id)
         {
             var productInfo = _unitOfWork.Product.GetT(x => x.Id == id, includeProperties: "Category");
-            Cart cart = new Cart()
+            ProductModel prod = new ProductModel()
             {
-                
-                Product =  _unitOfWork.Product.GetT(x => x.Id == id, includeProperties: "Category"),
+
+                Product = _unitOfWork.Product.GetT(x => x.Id == id, includeProperties: "Category"),
                 Count = 1,
                 ProductId = (int)id
             };
-            return View(cart);
+
+            return View(prod);
         }
 
         [HttpPost]
@@ -88,11 +89,22 @@ namespace ShoppingCart.Web.Controllers
 
         public IActionResult CreateUser(UserVM vm)
         {
-            vm.User.City = "Lahore";
-            _unitOfWork.User.Add(vm.User);
+            if (_unitOfWork.User.IsUserExists(vm.User.UserName))
+            {
+                TempData["name"] = vm.User.Name;
+                TempData["email"] = vm.User.Email;
+                TempData["username"] = vm.User.UserName;
+                TempData["message"] = "This Username already exists!";
+                return RedirectToAction("SignUp");
+            }
+            else
+            {
+                vm.User.City = "Lahore";
+                _unitOfWork.User.Add(vm.User);
 
-            _unitOfWork.Save();
-            return RedirectToAction("Index");
+                _unitOfWork.Save();
+                return RedirectToAction("Index");
+            }
         }
 
         public IActionResult LogIn(string username, string password)
