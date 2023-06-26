@@ -24,6 +24,7 @@ namespace ShoppingCart.DB.Model.Repositories
                 produtcDB.Name = product.Name;
                 produtcDB.Description = product.Description;
                 produtcDB.Price = product.Price;
+                produtcDB.CategoryId = product.CategoryId;
                 if (produtcDB != null)
                 {
                     produtcDB.ImageUrl = product.ImageUrl;
