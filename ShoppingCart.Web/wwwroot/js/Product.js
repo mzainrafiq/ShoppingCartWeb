@@ -1,13 +1,6 @@
 var dtable
 $(document).ready(function () {
 
-    var usr = localStorage.getItem("loggedInUser");
-    if (usr != null && usr != undefined && usr != "")
-    {
-        var loggedInUser = JSON.parse(usr);
-        if (loggedInUser.IsAdmin)
-            $(".productEditDelete").show();
-    }
     
     /*dtable = $('#myTable').DataTable({
         "ajax": { "url": "/Admin/Product/AllProducts" },

@@ -134,5 +134,15 @@ namespace ShoppingCart.Web.Controllers
             return Ok();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+
     }
 }
