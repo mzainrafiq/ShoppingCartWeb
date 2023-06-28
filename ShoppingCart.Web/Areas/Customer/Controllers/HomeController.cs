@@ -114,7 +114,7 @@ namespace ShoppingCart.Web.Controllers
                 User user = _unitOfWork.User.ValidateUser(username, password);
                 if(user!= null)
                 {
-                    TempData["UserName"] = user.UserName;
+                    TempData["UserName"] = user.Name;
                     TempData["UserId"] = user.UserId;
                     TempData["User"] = JsonConvert.SerializeObject(user);
                     return RedirectToAction("Index");

@@ -34,11 +34,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ShoppingCart.DB.Model\ShoppingCart.DB.Model.csproj" />
+    <Folder Include="wwwroot\ProductImage\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\ProductImage\" />
+    <ProjectReference Include="..\ShoppingCart.Repositories\ShoppingCart.Repositories.csproj" />
   </ItemGroup>
 
 </Project>
